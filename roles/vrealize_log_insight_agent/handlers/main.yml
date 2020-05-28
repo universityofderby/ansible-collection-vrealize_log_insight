@@ -1,0 +1,10 @@
+---
+- name: Restart vRealize Log Insight Linux Agent service
+  service:
+    name: liagentd
+    state: restarted
+
+- name: Restart vRealize Log Insight Windows Agent service
+  win_service:
+    name: LogInsightAgentService
+    state: restarted

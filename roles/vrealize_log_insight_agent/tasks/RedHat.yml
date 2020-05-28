@@ -1,0 +1,29 @@
+---
+- name: Ensure vRealize Log Insight Agent is installed
+  package:
+    name: "{{ vrealize_log_insight_agent_download_url }}"
+    state: present
+
+- name: Configure vRealize Log Insight Agent ini file
+  ini_file:
+    create: false
+    path: "{{ vrealize_log_insight_agent_config_path }}"
+    section: "{{ item.section }}"
+    no_extra_spaces: true
+    option: "{{ item.option }}"
+    state: present
+    value: "{{ item.value }}"
+  loop:
+    - {section: 'server', option: 'hostname', value: '{{ vrealize_log_insight_agent_server_hostname }}'}
+    - {section: 'server', option: 'proto', value: '{{ vrealize_log_insight_agent_server_proto }}'}
+    - {section: 'server', option: 'port', value: '{{ vrealize_log_insight_agent_server_port }}'}
+    - {section: 'server', option: 'ssl', value: '{{ vrealize_log_insight_agent_server_ssl }}'}
+    - {section: 'update', option: 'auto_update', value: '{{ vrealize_log_insight_agent_update_auto_update }}'}
+  notify:
+    - Restart vRealize Log Insight Linux Agent service
+
+- name: Ensure vRealize Log Insight Agent service is enabled and started
+  service:
+    enabled: true
+    name: liagentd
+    state: started

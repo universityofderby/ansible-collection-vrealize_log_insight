@@ -1,0 +1,12 @@
+---
+- name: Include {{ ansible_os_family }} variables
+  include_vars: "{{ ansible_os_family }}.yml"
+  when: ansible_os_family == 'Debian' or
+        ansible_os_family == 'RedHat' or
+        ansible_os_family == 'Windows'
+
+- name: Include {{ ansible_os_family }} tasks
+  include_tasks: "{{ ansible_os_family }}.yml"
+  when: ansible_os_family == 'Debian' or
+        ansible_os_family == 'RedHat' or
+        ansible_os_family == 'Windows'

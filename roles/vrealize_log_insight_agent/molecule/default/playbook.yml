@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: vrealize_log_insight_agent
+  vars:
+    vrealize_log_insight_agent_server_hostname: loginsight.derby.ac.uk
