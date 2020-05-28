@@ -12,7 +12,6 @@ Requirements
 ------------
 
 - Access to a VMware vRealize Log Insight cluster where the agent can be downloaded from.
-- Define the `vrealize_log_insight_agent_server_hostname` variable with the vRealize Log Insight server/cluster FQDN.
 
 Usage
 ----------------
