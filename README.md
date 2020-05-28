@@ -1,7 +1,7 @@
 vrealize_log_insight role collection for Ansible
 ================================================
 
-Collection of roles for VMware vRealize Log Insight.
+Collection of Ansible roles for VMware vRealize Log Insight.
 
 Roles
 -----
