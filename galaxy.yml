@@ -5,7 +5,7 @@ readme: README.md
 authors:
   - Richard Lock (University of Derby)
 license:
-  - BSD
+  - Apache-2.0
 tags:
   - agent
   - insight
