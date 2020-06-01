@@ -1,13 +1,7 @@
-vrealize_log_insight Ansible collection
+vrealize_log_insight_agent Ansible role
 =======================================
 
-Collection of Ansible roles for VMware vRealize Log Insight.
-
-Roles
------
-
- - [vrealize_log_insight_agent](https://github.com/universityofderby/ansible-collection-vrealize_log_insight/tree/master/roles/vrealize_log_insight_agent)
- (Install and configure VMware vRealize Log Insight Agent.)
+Ansible role to install and configure VMware vRealize Log Insight Agent.
 
 Requirements
 ------------
