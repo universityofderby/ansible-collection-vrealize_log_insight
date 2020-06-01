@@ -65,7 +65,6 @@ RedHat:
 ```yml
 vrealize_log_insight_agent_config_path: /var/lib/loginsight-agent/liagent.ini
 vrealize_log_insight_agent_download_url: "{{ vrealize_log_insight_agent_download_url_scheme }}://{{ vrealize_log_insight_agent_server_hostname }}:{{ vrealize_log_insight_agent_download_url_port }}/api/v1/agent/packages/types/rpm"
-
 ```
 
 Windows:
@@ -74,7 +73,6 @@ Windows:
 vrealize_log_insight_agent_config_path: '%ProgramData%\VMware\Log Insight Agent\liagent.ini'
 vrealize_log_insight_agent_download_url: "{{ vrealize_log_insight_agent_download_url_scheme }}://{{ vrealize_log_insight_agent_server_hostname }}:{{ vrealize_log_insight_agent_download_url_port }}/api/v1/agent/packages/types/msi"
 vrealize_log_insight_agent_service_path: '%PROGRAMFILES(X86)%\VMware\Log Insight Agent\liwinsvc.exe'
-
 ```
 
 Dependencies

@@ -1,6 +1,6 @@
 namespace: universityofderby
 name: vrealize_log_insight
-version: 0.1.0
+version: 0.1.1
 readme: README.md
 authors:
   - Richard Lock (University of Derby)
