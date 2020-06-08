@@ -1,0 +1,66 @@
+; VMware Log Insight Agent configuration. Please save as UTF-8 if you use non-ASCII names / values !
+; Actual configuration is this file joined with settings from server to form liagent-effective.ini
+; Note: Restarting the agent is not required after making a configuration change
+; Note: It may be more efficient to configure from server's Agents page !
+
+[server]
+; Hostname or IP address of your Log Insight server / cluster load balancer. Default:
+hostname={{ vrealize_log_insight_agent_server_hostname }}
+
+; Protocol can be cfapi (Log Insight REST API), syslog. Default:
+proto={{ vrealize_log_insight_agent_server_proto }}
+
+; Log Insight server port to connect to. Default ports for protocols (all TCP):
+; syslog: 514; syslog with ssl: 6514; cfapi: 9000; cfapi with ssl: 9543. Default:
+port={{ vrealize_log_insight_agent_server_port }}
+
+; SSL usage. Default:
+ssl={{ vrealize_log_insight_agent_server_ssl }}
+; Example of configuration with trusted CA:
+;ssl=yes
+;ssl_ca_path=/etc/pki/tls/certs/ca.pem
+
+; Time in minutes to force reconnection to the server.
+; This option mitigates imbalances caused by long-lived TCP connections. Default:
+;reconnect=30
+
+; Allow the agent to receive central configuration from the server.
+; If disabled, only agent-side configuration will be applied. Default:
+;central_config=yes
+
+[logging]
+; Logging verbosity: 0 (no debug messages), 1 (essentials), 2 (verbose with more impact on performance).
+; This option should always be 0 under normal operating conditions. Default:
+;debug_level=0
+
+; Frequency to print agent dynamic information in minutes. Default:
+;stats_period=15
+
+; Allow the agent to automatically decrease dynamic information print period to 1 minute
+; in case if agent abnormal performance is detected.
+; If disabled, agent performance won't be monitored at all. Default:
+;smart_stats=no
+
+[storage]
+; Max local storage usage limit (data + logs) in MBs. Valid range: 100-2000 MB.
+;max_disk_buffer=200
+
+; Uncomment the following sections to collect these channels.
+; The recommended way is to enable Windows content pack from LI server.
+;[winlog|Application]
+;channel=Application
+
+;[winlog|Security]
+;channel=Security
+
+;[winlog|System]
+;channel=System
+
+[update]
+; Do not change this parameter
+package_type=msi
+
+; Enable automatic update of the agent. If enabled:
+; the agent will silently check for updates from the server and
+; if available will automatically download and apply the update.
+auto_update={{ vrealize_log_insight_agent_update_auto_update }}

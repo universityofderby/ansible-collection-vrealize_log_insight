@@ -1,25 +1,19 @@
 ---
+- name: Download vRealize Log Insight Agent setup file
+  win_get_url:
+    url: "{{ vrealize_log_insight_agent_download_url }}"
+    dest: "{{ vrealize_log_insight_agent_download_dest }}"
+
 - name: Ensure vRealize Log Insight Agent is installed
   win_package:
     creates_service: LogInsightAgentService
-    path: "{{ vrealize_log_insight_agent_download_url }}"
+    path: "{{ vrealize_log_insight_agent_download_dest }}"
     state: present
 
-- name: Configure vRealize Log Insight Agent ini file
-  ini_file:
-    create: false
-    path: "{{ vrealize_log_insight_agent_config_path }}"
-    section: "{{ item.section }}"
-    no_extra_spaces: true
-    option: "{{ item.option }}"
-    state: present
-    value: "{{ item.value }}"
-  loop:
-    - {section: 'server', option: 'hostname', value: '{{ vrealize_log_insight_agent_server_hostname }}'}
-    - {section: 'server', option: 'proto', value: '{{ vrealize_log_insight_agent_server_proto }}'}
-    - {section: 'server', option: 'port', value: '{{ vrealize_log_insight_agent_server_port }}'}
-    - {section: 'server', option: 'ssl', value: '{{ vrealize_log_insight_agent_server_ssl }}'}
-    - {section: 'update', option: 'auto_update', value: '{{ vrealize_log_insight_agent_update_auto_update }}'}
+- name: Generate vRealize Log Insight Windows Agent configuration file
+  template:
+    dest: "{{ vrealize_log_insight_agent_config_path }}"
+    src: windows_liagent.ini.j2
   notify:
     - Restart vRealize Log Insight Windows Agent service
 
@@ -33,3 +27,8 @@
     start_mode: auto
     state: started
     username: LocalSystem
+
+- name: Remove vRealize Log Insight Agent setup file
+  win_file:
+    path: "{{ vrealize_log_insight_agent_download_dest }}"
+    state: absent
