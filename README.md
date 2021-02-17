@@ -65,6 +65,7 @@ RedHat:
 ```yml
 vrealize_log_insight_agent_config_path: /var/lib/loginsight-agent/liagent.ini
 vrealize_log_insight_agent_download_url: "{{ vrealize_log_insight_agent_download_url_scheme }}://{{ vrealize_log_insight_agent_server_hostname }}:{{ vrealize_log_insight_agent_download_url_port }}/api/v1/agent/packages/types/rpm"
+vrealize_log_insight_agent_file_path: /tmp/loginsight.rpm
 ```
 
 Windows:

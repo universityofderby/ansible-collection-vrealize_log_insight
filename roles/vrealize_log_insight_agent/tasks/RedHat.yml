@@ -1,8 +1,14 @@
 ---
-- name: Ensure vRealize Log Insight Agent is installed
+- name: Download vRealize Log Inisght agent 
+  get_url:
+    url: "{{ vrealize_log_insight_agent_download_url }}"
+    dest: "{{ vrealize_log_insight_agent_file_path }}"
+
+- name: Install vRealize Log Insight Agent
   package:
-    name: "{{ vrealize_log_insight_agent_download_url }}"
+    name: "{{ vrealize_log_insight_agent_file_path }}"
     state: present
+    disable_gpg_check: True
 
 - name: Configure vRealize Log Insight Agent ini file
   ini_file:
@@ -27,3 +33,8 @@
     enabled: true
     name: liagentd
     state: started
+
+- name: Cleanup tmp vRealize Log Inisght agent RPM file 
+  file:
+    path: "{{ vrealize_log_insight_agent_file_path }}"
+    state: absent
