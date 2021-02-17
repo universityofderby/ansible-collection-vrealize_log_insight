@@ -1,11 +1,11 @@
-namespace: universityofderby
-name: vrealize_log_insight
-version: 0.1.4
-readme: README.md
+namespace: "universityofderby"
+name: "vrealize_log_insight"
+version: "0.1.4"
+readme: "README.md"
 authors:
-  - Richard Lock (University of Derby)
+  - "Richard Lock (University of Derby)"
 license:
-  - Apache-2.0
+  - "Apache-2.0"
 tags:
   - agent
   - insight
@@ -13,4 +13,4 @@ tags:
   - logging
   - vmware
   - vrealize
-repository: https://github.com/universityofderby/ansible-collection-vrealize_log_insight
+repository: "https://github.com/universityofderby/ansible-collection-vrealize_log_insight"
